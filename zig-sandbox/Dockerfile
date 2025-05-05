@@ -6,7 +6,7 @@ ARG USERNAME
 ARG USER_UID
 ARG USER_GID
 
-RUN apk add --no-cache curl bash minisign vim
+RUN apk add --no-cache curl bash minisign vim make
 
 WORKDIR /zig
 
