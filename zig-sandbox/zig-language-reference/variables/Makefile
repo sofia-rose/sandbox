@@ -4,7 +4,8 @@ PROGRAMS=$(basename $(SOURCES))
 all: $(PROGRAMS)
 
 $(PROGRAMS): %: %.zig
-	zig build-exe $<
+	zig test $<
+	touch $@
 
 .PHONY: clean
 clean:
