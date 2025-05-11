@@ -1,3 +1,6 @@
 [submodule "postgres-sandbox/postgresql"]
 	path = postgres-sandbox/postgresql
 	url = https://git.postgresql.org/git/postgresql.git
+[submodule "flink-sandbox/flink"]
+	path = flink-sandbox/flink
+	url = https://github.com/apache/flink.git
