@@ -1,0 +1,2 @@
+* solve static verison of Xau problem.
+  * alpine does not seem to have a static version, could i build a static version from source?
