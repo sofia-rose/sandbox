@@ -4,3 +4,6 @@
 [submodule "flink-sandbox/flink"]
 	path = flink-sandbox/flink
 	url = https://github.com/apache/flink.git
+[submodule "kafka-sandbox/kafka"]
+	path = kafka-sandbox/kafka
+	url = https://github.com/apache/kafka.git
