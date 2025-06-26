@@ -1,0 +1,7 @@
+*
+!*/
+!.gitignore
+!*.s
+!Makefile
+!Dockerfile
+!enter-dev.sh
