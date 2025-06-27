@@ -9,8 +9,8 @@
 ;         running the program.
 
 ; VARIABLES:
-;             %rax holds the system call number
-;             %rdi holds the return status
+;             rax: holds the system call number
+;             rdi: holds the return status
 
 global _start
 
