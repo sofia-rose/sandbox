@@ -1,0 +1,10 @@
+*
+!*/
+!.gitignore
+!*.s
+!*.cpp
+!*.inc
+!*.h
+!Makefile
+!Dockerfile
+!enter-dev.sh
