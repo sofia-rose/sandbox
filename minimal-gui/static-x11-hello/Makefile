@@ -1,4 +1,6 @@
-static-x11-hello: main.c
+.PHONY: clean format
+
+static-x11-hello: main.c format
 	gcc -Wall -Wmissing-prototypes -Wstrict-prototypes -Werror -pedantic -ansi -std=c99 \
   -static \
   -O3 \
@@ -9,6 +11,8 @@ static-x11-hello: main.c
   -lXau \
   -lXdmcp
 
-.PHONY: clean
+format: main.c
+	clang-format -i main.c
+
 clean:
 	rm -f static-x11-hello

@@ -1,5 +1,5 @@
-#include <X11/Xlib.h>
 #include <X11/XKBlib.h>
+#include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,16 +17,8 @@ int main(int argc, char *argv[]) {
   int screen = XDefaultScreen(display);
 
   Window window = XCreateSimpleWindow(
-    display,
-    RootWindow(display, screen),
-    0,
-    0,
-    320,
-    240,
-    0,
-    BlackPixel(display, screen),
-    BlackPixel(display, screen)
-  );
+      display, RootWindow(display, screen), 0, 0, 320, 240, 0,
+      BlackPixel(display, screen), BlackPixel(display, screen));
 
   XStoreName(display, window, "Hello, X11");
 
@@ -49,25 +41,23 @@ int main(int argc, char *argv[]) {
       XNextEvent(display, &e);
       printf("Event type: %d\n", e.type);
 
-      switch(e.type) {
-        case KeyPress: {
-          if (escapeKey == e.xkey.keycode) {
+      switch (e.type) {
+      case KeyPress: {
+        if (escapeKey == e.xkey.keycode) {
+          goto end;
+        }
+      } break;
+      case ClientMessage: {
+        if (e.xclient.format == 32) {
+          if ((Atom)e.xclient.data.l[0] == WM_DELETE_WINDOW) {
             goto end;
           }
         }
-        break;
-        case ClientMessage: {
-          if (e.xclient.format == 32) {
-            if ((Atom)e.xclient.data.l[0] == WM_DELETE_WINDOW) {
-              goto end;
-            }
-          }
-        }
-        break;
+      } break;
       }
     }
   }
-  end:
+end:
 
   return XCloseDisplay(display);
 }
