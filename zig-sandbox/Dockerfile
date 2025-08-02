@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/alpine:20250108
 
-ARG ZIG_BUNDLE=zig-linux-x86_64-0.15.0-dev.375+8f8f37fb0.tar.xz
+ARG ZIG_BUNDLE=zig-x86_64-linux-0.15.0-dev.1283+1fcaf90dd.tar.xz
 ARG ZIG_PUBLIC_KEY=RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U
 ARG USERNAME
 ARG USER_UID

@@ -1,18 +1,21 @@
 const std = @import("std");
 
 pub fn main() !void {
-  const stdout = std.io.getStdOut().writer();
+  var buf : [256]u8 = undefined;
+  var stdout = std.fs.File.stdout().writer(&buf);
+  const writer = &stdout.interface;
 
   var count : u8 = 1;
   while (count <= 100) : (count += 1) {
     if (count % 3 == 0 and count % 5 == 0) {
-      try stdout.writeAll("Fizz Buzz\n");
+      try writer.writeAll("Fizz Buzz\n");
     } else if (count % 5 == 0) {
-      try stdout.writeAll("Buzz\n");
+      try writer.writeAll("Buzz\n");
     } else if (count % 3 == 0) {
-      try stdout.writeAll("Fizz\n");
+      try writer.writeAll("Fizz\n");
     } else {
-      try stdout.print("{}\n", .{count});
+      try writer.print("{}\n", .{count});
     }
+    try writer.flush();
   }
 }

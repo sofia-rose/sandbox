@@ -18,7 +18,7 @@ pub fn main() !void {
   };
 
   const category = threshold.categorize(0.90);
-  try std.io.getStdOut().writeAll(@tagName(category));
+  try std.fs.File.stdout().writeAll(@tagName(category));
 }
 
 const std = @import("std");

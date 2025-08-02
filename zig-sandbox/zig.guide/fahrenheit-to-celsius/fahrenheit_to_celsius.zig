@@ -1,7 +1,9 @@
 const std = @import("std");
 
 pub fn main() !void {
-  const stdout = std.io.getStdOut().writer();
+  var buf : [256]u8 = undefined;
+  var stdout = std.fs.File.stdout().writer(&buf);
+  const writer = &stdout.interface;
 
   const args = try std.process.argsAlloc(std.heap.page_allocator);
   defer std.process.argsFree(std.heap.page_allocator, args);
@@ -10,5 +12,6 @@ pub fn main() !void {
 
   const f = try std.fmt.parseFloat(f32, args[1]);
   const c = (f - 32) * (5.0 / 9.0);
-  try stdout.print("{d:.1}c\n", .{c});
+  try writer.print("{d:.1}c\n", .{c});
+  try writer.flush();
 }
