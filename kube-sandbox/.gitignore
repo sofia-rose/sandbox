@@ -1,0 +1,4 @@
+/bin/kind
+/bin/kubectl
+/bin/helm
+*.sha256
