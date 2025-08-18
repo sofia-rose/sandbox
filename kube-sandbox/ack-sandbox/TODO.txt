@@ -1,0 +1,8 @@
+# TODO
+
+* Do something about the manual hacking of the deployment to add the option `--allow-unsafe-aws-endpoint-urls true`
+  * Setup TLS for localstack?
+* Is it possible to use iam roles instead of iam users and keys with localstack and kind?
+* Add kubectl to awscli-shell image
+* Move awscli-shell to run in ack-system namespace?
+* Add rbac to awscli-shell deployment so kubectl can do things

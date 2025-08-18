@@ -1,0 +1,19 @@
+aws:
+  region: us-east-1
+
+deployment:
+  extraEnvVars:
+    - name: AWS_ENDPOINT_URL
+      value: http://localstack.localstack.svc.cluster.local:4566
+    - name: ALLOW_UNSAFE_AWS_ENDPOINT_URLS
+      value: 'true'
+    - name: AWS_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          name: ack-iam-controller-credentials
+          key: AWS_ACCESS_KEY_ID
+    - name: AWS_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          name: ack-iam-controller-credentials
+          key: AWS_SECRET_ACCESS_KEY

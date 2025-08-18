@@ -1,0 +1,57 @@
+---
+apiVersion: iam.services.k8s.aws/v1alpha1
+kind: User
+metadata:
+  name: ack-rds-controller-user
+  namespace: ack-system
+spec:
+  name: ack-rds-controller-user
+  policies:
+    - 'arn:aws:iam::aws:policy/AmazonRDSFullAccess'
+---
+apiVersion: iam.services.k8s.aws/v1alpha1
+kind: User
+metadata:
+  name: ack-s3-controller-user
+  namespace: ack-system
+spec:
+  name: ack-s3-controller-user
+  policies:
+    - 'arn:aws:iam::aws:policy/AmazonS3FullAccess'
+  inlinePolicies:
+    inline-policy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "S3AllPermission",
+            "Effect": "Allow",
+            "Action": [
+              "s3:*",
+              "s3-object-lambda:*"
+            ],
+            "Resource": "*"
+          },
+          {
+            "Sid": "S3ReplicationPassRole",
+            "Condition": {
+              "StringEquals": {
+                "iam:PassedToService": "s3.amazonaws.com"
+              }
+            },
+            "Action": "iam:PassRole",
+            "Resource": "*",
+            "Effect": "Allow"
+          }
+        ]
+      }
+---
+apiVersion: iam.services.k8s.aws/v1alpha1
+kind: User
+metadata:
+  name: ack-ec2-controller-user
+  namespace: ack-system
+spec:
+  name: ack-ec2-controller-user
+  policies:
+    - 'arn:aws:iam::aws:policy/AmazonEC2FullAccess'

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: awscli-shell-deployment
+  labels:
+    app: awscli-shell-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: awscli-shell-deployment
+  template:
+    metadata:
+      labels:
+        app: awscli-shell-deployment
+    spec:
+      containers:
+        - name: awscli-shell
+          image: localhost:5001/ack-bootstap:development
+          command:
+            - infinite-loop.sh
+          imagePullPolicy: Always
+          env:
+            - name: AWS_ENDPOINT_URL
+              value: http://localstack.localstack.svc.cluster.local:4566
+            - name: AWS_REGION
+              value: us-east-1
+            - name: AWS_ACCESS_KEY_ID
+              value: '123456789000'
+            - name: AWS_SECRET_ACCESS_KEY
+              value: test
