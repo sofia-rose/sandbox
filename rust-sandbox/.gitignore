@@ -3,3 +3,5 @@
 !.gitignore
 !*.rs
 !Makefile
+!Cargo.toml
+!Cargo.lock

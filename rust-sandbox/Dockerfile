@@ -5,7 +5,7 @@ ARG USER_UID
 ARG USER_GID
 
 RUN apt-get update
-RUN apt-get install -y bash vim make
+RUN apt-get install -y bash bash-completion vim make
 
 RUN addgroup --gid "${USER_GID}" "${USERNAME}"
 RUN adduser --disabled-password --uid "${USER_UID}" --ingroup "${USERNAME}" --home "/home/${USERNAME}" "${USERNAME}"
