@@ -3,6 +3,14 @@
 section .text
 
 global SumValsI32_a
+; a: edi
+; b: esi
+; c: edx
+; d: ecx
+; e: r8d
+; f: r9d
+; g: [rsp+8]  (stack always aligned to 8 byte boundary)
+; h: [rsp+16]
 SumValsI32_a:
   ; calculate a + b + c + d
   add edi, esi        ; edi = a + b
@@ -19,6 +27,14 @@ SumValsI32_a:
   ret
 
 global MulValsU64_a
+; a: rdi
+; b: rsi
+; c: rdx
+; d: rcx
+; e: r8
+; f: r9
+; g: [rsp+8]
+; h: [rsp+16]
 MulValsU64_a:
   ; calculate a * b * c * d * e * f * g * h
   mov r10, rdx        ; save copy of c
