@@ -1,3 +1,8 @@
+/*
+  This code is based on page 276 of the book:
+  Patterns For Parallel Programming (2005)
+*/
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <mpi.h>
