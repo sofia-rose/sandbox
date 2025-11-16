@@ -1,0 +1,12 @@
+#include "ch04-02.h"
+
+void CalcArrayVals_cpp(
+  int64_t* c,
+  const int64_t* a,
+  const int64_t* b,
+  size_t n
+) {
+  for (size_t i = 0; i < n; ++i) {
+    c[i] = (a[i] * 25) / (b[i] + 10);
+  }
+}
