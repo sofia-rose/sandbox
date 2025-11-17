@@ -3,8 +3,8 @@
 set -eu
 
 export HOST_WORKSPACE="${HOST_WORKSPACE:-$PWD}"
-export CONTAINER_WORKSPACE="${CONTAINER_WORKSPACE:-/home/coq/workspace}"
-export IMAGE_NAME=coq-sandbox
+export CONTAINER_WORKSPACE="${CONTAINER_WORKSPACE:-/home/rocq/workspace}"
+export IMAGE_NAME=rocq-sandbox
 export IMAGE_TAG=development
 
 docker build \

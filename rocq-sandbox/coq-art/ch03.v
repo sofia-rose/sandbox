@@ -240,7 +240,7 @@ Section Minimal_propositional_logic.
     assumption.
   Qed.
 
-  (* TODO: Exercise 3.4 on page 67. Proof it using coq itself? *)
+  (* TODO: Exercise 3.4 on page 67. Proof it using rocq itself? *)
 
   Section section_for_cut_example.
     Hypotheses  (H : P -> Q)
