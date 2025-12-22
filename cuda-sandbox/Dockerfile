@@ -1,8 +1,4 @@
-FROM nvidia/cuda:12.2.2-devel-ubuntu22.04
+FROM nvidia/cuda:13.1.0-devel-ubuntu24.04
 
-ARG USERNAME
-ARG USER_UID
-ARG USER_GID
-
-RUN addgroup --gid "${USER_GID}" "${USERNAME}"
-RUN adduser --disabled-password --uid "${USER_UID}" --ingroup "${USERNAME}" --home "/home/${USERNAME}" "${USERNAME}"
+RUN apt-get update
+RUN apt-get install -y bash-completion

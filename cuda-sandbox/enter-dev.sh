@@ -2,9 +2,7 @@
 
 set -eu
 
-export USERNAME="$(whoami)"
-export USER_UID="$(id -u)"
-export USER_GID="$(id -g)"
+USERNAME=ubuntu
 
 export HOST_WORKSPACE="${HOST_WORKSPACE:-$PWD}"
 export CONTAINER_WORKSPACE="${CONTAINER_WORKSPACE:-/home/${USERNAME}/workspace}"
@@ -13,9 +11,6 @@ export IMAGE_TAG=development
 
 docker build \
   --progress plain \
-  --build-arg USERNAME \
-  --build-arg USER_UID \
-  --build-arg USER_GID \
   --platform linux/amd64 \
   --tag "${IMAGE_NAME}:${IMAGE_TAG}" \
   .
