@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/rust:1.90-bullseye
+FROM public.ecr.aws/docker/library/rust:1.94-trixie
 
 ARG USERNAME
 ARG USER_UID
