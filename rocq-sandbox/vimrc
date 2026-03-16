@@ -20,3 +20,8 @@ let mapleader = ","
 filetype plugin on
 filetype indent on
 syntax on
+
+hi def CoqtailChecked ctermbg=17 guibg=#113311
+hi def CoqtailSent    ctermbg=60 guibg=#007630
+hi def link CoqtailError         Error
+hi def link CoqtailOmitted       coqProofAdmit
