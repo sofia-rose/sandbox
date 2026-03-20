@@ -1,8 +1,11 @@
-sample.gb: main.o
-	rgblink --dmg --tiny -o sample.gb main.o
-	rgbfix --title game --pad-value 0 --validate sample.gb
+sample.gb: main.o sample.o
+	rgblink --dmg --tiny --map $(basename $@).map --sym $(basename $@).sym -o $@ $^
+	rgbfix --title game --pad-value 0 --validate $@
 
-main.o: main.s
+main.o: main.s hardware.inc
+	rgbasm -Werror -Weverything -o $@ $<
+
+sample.o: sample.s utils.inc hardware.inc
 	rgbasm -Werror -Weverything -o $@ $<
 
 .PHONY: clean

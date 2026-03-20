@@ -1,14 +1,18 @@
-def ROM_HEADER_ADDRESS  equ $0100
-def ROM_MAIN_ADDRESS    equ $0150
+include "hardware.inc"
 
-section "header", rom0[ROM_HEADER_ADDRESS]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+section "header", rom0[$0100]
+entrypoint:
   di
-  jr main
+  jp main
+  ds ($0150 - @), 0
 
-section "main", rom0[ROM_MAIN_ADDRESS]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+section "main", rom0
 main:
-  ld a, 0
+  call InitSample
   .loop:
-    ld [$C000], a
-    inc a
+    call UpdateSample
     jr .loop
